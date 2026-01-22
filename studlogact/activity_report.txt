@@ -1,0 +1,10 @@
+=== STUDENT ACTIVITY REPORT ===
+
+Student ID: S101
+Name: Sindhu
+Total Logins: 1
+Total Submissions: 1
+
+=== DAILY ACTIVITY STATISTICS ===
+2026-01-04: 1 activities
+2026-01-22: 1 activities
