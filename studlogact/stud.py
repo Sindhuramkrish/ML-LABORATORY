@@ -8,16 +8,20 @@ class Student:
         self.login_count = 0
         self.submit_count = 0
         self.is_logged_in = False
-        self.abnormal = False
+        self.abnormal = False  # Track abnormal login/logout behavior
 
     def add_activity(self, activity):
         if activity == "LOGIN":
             self.login_count += 1
             if self.is_logged_in:
+                # If the student is already logged in, mark it as abnormal
                 self.abnormal = True
             self.is_logged_in = True
 
         elif activity == "LOGOUT":
+            if not self.is_logged_in:
+                # If the student logs out without being logged in, mark it as abnormal
+                self.abnormal = True
             self.is_logged_in = False
 
         elif activity == "SUBMIT_ASSIGNMENT":
@@ -29,7 +33,7 @@ class Student:
         print("Total Logins:", self.login_count)
         print("Total Submissions:", self.submit_count)
         if self.abnormal:
-            print("⚠ Abnormal Behavior: Multiple logins without logout")
+            print("⚠ Abnormal Behavior: Multiple logins without logout or logout without login")
         print()
 
 
@@ -116,7 +120,7 @@ else:
             report.write(f"Total Submissions: {student.submit_count}\n")
 
             if student.abnormal:
-                report.write("Abnormal Behavior: Multiple logins without logout\n")
+                report.write("Abnormal Behavior: Multiple logins without logout or logout without login\n")
 
             report.write("\n")
 
